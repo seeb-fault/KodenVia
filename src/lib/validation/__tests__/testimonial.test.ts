@@ -41,9 +41,9 @@ describe("submitTestimonialSchema", () => {
     expect(
       submitTestimonialSchema.parse({ ...valid, instagramUrl: "@kodenvia" }).instagramUrl,
     ).toBe("https://instagram.com/kodenvia");
-    expect(
-      submitTestimonialSchema.parse({ ...valid, instagramUrl: "kodenvia" }).instagramUrl,
-    ).toBe("https://instagram.com/kodenvia");
+    expect(submitTestimonialSchema.parse({ ...valid, instagramUrl: "kodenvia" }).instagramUrl).toBe(
+      "https://instagram.com/kodenvia",
+    );
   });
 
   it("keeps a full Instagram URL as-is", () => {

@@ -1,0 +1,20 @@
+name: Proponer una mejora
+description: Propón una mejora concreta para Kodenvia.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué necesidad quieres resolver
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solución propuesta y alcance
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Cómo comprobaremos que está lista

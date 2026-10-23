@@ -1,5 +1,8 @@
 # Kodenvia
 
+[![CI](https://github.com/seeb-fault/KodenVia/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/seeb-fault/KodenVia/actions/workflows/ci.yml)
+[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-green.svg)](LICENSE)
+
 **Tecnología que impulsa tu negocio.**
 
 Sitio web empresarial de Kodenvia, una compañía fundada por **Noe Santiago y Brayam Espino** en Perú. Presenta nuestros servicios de desarrollo web, aplicaciones a medida y automatización, junto con el equipo y su trayectoria individual.
@@ -106,6 +109,14 @@ git config core.hooksPath .githooks
 Configura una base PostgreSQL de producción, las variables del entorno y el dominio definitivo en `NEXT_PUBLIC_SITE_URL`. Aplica las migraciones y carga el contenido inicial antes del primer build. Configura OAuth, Blob y correo para habilitar las funciones que los usan.
 
 El proyecto incluye configuración para Vercel. Los cambios desde el administrador actualizan el sitio; la regeneración periódica está fijada en 12 horas para controlar consultas y costes de base de datos. No publiques los testimonios de demostración como referencias verificadas.
+
+## GitHub y Pull Requests
+
+Repositorio: [seeb-fault/KodenVia](https://github.com/seeb-fault/KodenVia). La rama principal es `main`. Trabajamos con ramas y Pull Requests, usando títulos Conventional Commits y un incremento de versión en `package.json` para cada PR.
+
+CI valida formato, ortografía, lint, tipos, pruebas unitarias, compilación webpack, rutas, rendimiento y pruebas de navegador en producción con PostgreSQL temporal. No necesita credenciales de la base de producción ni secretos de servicios externos. Las releases se generan después de que CI apruebe un push a `main`.
+
+Consulta la [guía de colaboración y configuración de GitHub](docs/GITHUB.md) para revisar PRs, activar protecciones de rama y distinguir los badges del repositorio de los logros del perfil.
 
 ## Contacto
 

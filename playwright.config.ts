@@ -14,7 +14,12 @@ export default defineConfig({
     baseURL,
     trace: "on-first-retry",
   },
-  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  projects: [
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"], channel: process.env.CI ? "chrome" : undefined },
+    },
+  ],
   webServer: {
     command: production ? `node node_modules/next/dist/bin/next start -p ${port}` : "bun run dev",
     url: baseURL,

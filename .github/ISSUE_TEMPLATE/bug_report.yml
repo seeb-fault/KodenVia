@@ -1,0 +1,27 @@
+name: Reportar un error
+description: Describe un fallo reproducible del sitio de Kodenvia.
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué ocurrió
+      description: Incluye la página afectada y el mensaje de error, sin credenciales ni datos privados.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Pasos para reproducirlo
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Navegador, dispositivo y versión del proyecto
