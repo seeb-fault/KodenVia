@@ -17,7 +17,7 @@ concurrency:
 jobs:
   quality:
     name: quality
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     services:
       postgres:
@@ -84,9 +84,11 @@ jobs:
           if [ "$ready" -ne 1 ]; then cat /tmp/kodenvia-next.log; exit 1; fi
           bun run check:routes
           bun run check:vitals
-      - name: Install Chromium
-        run: bunx playwright install --with-deps chromium
+      - name: Verify runner browser
+        timeout-minutes: 1
+        run: google-chrome --version
       - name: Browser tests against production
+        timeout-minutes: 3
         run: bun run test:e2e --workers=2
       - name: Upload browser report
         if: always()

@@ -16,7 +16,7 @@ Las plantillas de Issues permiten reportar errores y proponer mejoras. La planti
 
 ## Integración continua
 
-El workflow CI usa Node.js 24, Bun 1.4.2 y PostgreSQL 16 temporal. Ejecuta las comprobaciones del código, las pruebas unitarias y de componentes, migraciones, carga inicial, build con webpack, comprobaciones de rutas y rendimiento, y pruebas de Chromium contra producción. Los datos y contraseñas de CI son temporales y no son credenciales de producción.
+El workflow CI usa Ubuntu 24.04, Node.js 24, Bun 1.4.2 y PostgreSQL 16 temporal. Ejecuta las comprobaciones del código, las pruebas unitarias y de componentes, migraciones, carga inicial, build con webpack, comprobaciones de rutas y rendimiento, y pruebas contra producción usando el Google Chrome preinstalado en el runner. Playwright usa el canal `chrome` en CI y Chromium en desarrollo local. Así no necesita instalar el navegador y sus dependencias en cada ejecución. Los datos y contraseñas de CI son temporales y no son credenciales de producción.
 
 El informe de Playwright queda disponible como artefacto durante siete días. CI se ejecuta al abrir o actualizar PRs, al publicar cambios en `main` y manualmente desde Actions. Las releases automáticas solo se generan después de un CI aprobado sobre un push a `main`.
 
