@@ -120,11 +120,11 @@ bun run check:vitals    # per-route JS payload and TTFB budgets
 - **Never use em-dashes.** Use a hyphen instead. This applies to code comments, commit messages, and prose.
 - Markdown prose is never hard-wrapped: one line per paragraph and per list item. Do not re-wrap these files to a column.
 - New words go in `cspell.json`, which the gate checks over `src/`, `scripts/` and root markdown. **`src/db/seed.ts` is excluded on purpose**: it is sample content, so its testimonial authors and employer names churn freely, and listing them turned the dictionary into a registry of throwaway data. Do not add seed-only names back - change the seed instead. Names that are part of Kodenvia's real identity belong in the dictionary.
-- The PR title becomes the squash commit message. `master` is protected: PR required, squash-only merges, admins may self-merge.
+- The PR title becomes the squash commit message. The Kodenvia default branch is `main`; use PRs and squash merges. Branch protection must be enabled by the repository owner; do not claim it is enforced without checking repository settings. The authenticated collaborator may self-merge after the checks pass.
 
 ## Versioning and release
 
-Every PR must bump `version` in `package.json`. `version-check.yml` enforces it as the required check **`package.json version bumped`**. On merge to `master`, `release.yml` reads that version and creates tag `v<version>` plus a GitHub Release, skipping idempotently if the tag already exists. There is no manual tagging step.
+Every PR must bump `version` in `package.json`. `version-check.yml` checks it with **`package.json version bumped`**. After CI succeeds for a push to `main`, `release.yml` reads that version and creates tag `v<version>` plus a GitHub Release, skipping idempotently if the release already exists. There is no manual tagging step.
 
 ## Content model
 

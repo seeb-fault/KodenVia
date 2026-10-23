@@ -1,0 +1,52 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  version-bumped:
+    name: package.json version bumped
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require("node:fs");
+            const current = JSON.parse(fs.readFileSync("package.json", "utf8")).version;
+            const { data } = await github.rest.repos.getContent({
+              ...context.repo,
+              path: "package.json",
+              ref: context.payload.pull_request.base.sha,
+            });
+            const previous = JSON.parse(Buffer.from(data.content, "base64").toString()).version;
+            const parse = (version) => {
+              if (!/^\d+\.\d+\.\d+$/.test(version)) throw new Error(`Invalid stable version: ${version}`);
+              return version.split(".").map(Number);
+            };
+            const before = parse(previous);
+            const after = parse(current);
+            const index = after.findIndex((part, i) => part !== before[i]);
+            if (index === -1 || after[index] < before[index]) {
+              core.setFailed(`Bump package.json version above ${previous}; found ${current}.`);
+            } else {
+              core.info(`Version: ${previous} -> ${current}`);
+            }
+  title:
+    name: PR title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+            if (title.length > 50 || !/^(feat|fix|docs|refactor|test|chore|ci|build|perf): .+[^.]$/.test(title)) {
+              core.setFailed("Use a Conventional Commit title of at most 50 characters, without a final period.");
+            }
