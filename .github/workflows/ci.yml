@@ -62,7 +62,7 @@ jobs:
           bunx next typegen
           bun run typecheck
       - name: Unit and component tests
-        run: bun run test --pool=threads --maxWorkers=2
+        run: bun run test
       - name: Migrate and seed temporary database
         run: |
           bun run db:migrate
