@@ -104,7 +104,8 @@
     "UrbanCut",
     "BellaVita",
     "Cosmetología",
-    "callback"
+    "callback",
+    "seeb"
   ],
   "ignorePaths": [
     "node_modules/**",
