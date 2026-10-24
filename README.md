@@ -13,7 +13,7 @@ Sitio web empresarial de Kodenvia, una compañía fundada por **Noe Santiago y B
 
 - Presentación de la empresa, equipo, servicios y contacto.
 - Proyectos con responsable, rol, periodo, tecnologías y estado: desarrollo, prototipo o propuesta académica.
-- Experiencia individual de cada socio. La trayectoria de Brayam está pendiente de incorporar.
+- Experiencia individual de cada socio. Incluye los proyectos de Noe y de Brayam.
 - Tecnologías utilizadas por Noe y preguntas frecuentes.
 - Testimonios con tarjetas animadas y formulario público. Las referencias reales requieren aprobación en el administrador; mientras no haya aprobadas se muestran cinco ejemplos identificados como demostración.
 - Administrador protegido con GitHub OAuth para editar contenido y controlar la visibilidad de las secciones.
