@@ -9,8 +9,10 @@ export const TEAM_MEMBERS = [
   },
   {
     name: "Brayam Espino",
-    specialty: null,
-    summary: null,
-    education: null,
+    specialty: "Desarrollo móvil con Flutter y sistemas web",
+    summary:
+      "Desarrolla aplicaciones móviles con Flutter y Firebase y sistemas web de gestión, con enfoque en arquitectura limpia, seguridad por roles y tutoría con inteligencia artificial.",
+    education:
+      "Estudiante de 8.º ciclo de Ingeniería de Sistemas en la Universidad Nacional de San Cristóbal de Huamanga (UNSCH), Ayacucho, Perú.",
   },
 ] as const;

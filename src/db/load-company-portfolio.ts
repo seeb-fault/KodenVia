@@ -56,8 +56,9 @@ try {
     }
     await tx`update profile set section_visibility = section_visibility || '{"projects":true,"experience":true,"skills":true}'::jsonb`;
   });
+  const count = COMPANY_PORTFOLIO.length;
   console.log(
-    "Imported 6 attributed projects, 6 project experience entries and the provided technologies.",
+    `Imported ${count} attributed projects, ${count} project experience entries and the provided technologies.`,
   );
 } finally {
   await sql.end();

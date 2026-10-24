@@ -150,6 +150,143 @@ export const COMPANY_PORTFOLIO: PortfolioEntry[] = [
       ],
     },
   },
+  {
+    repo: "brayam-academiapp-v2",
+    title: "AcademiApp v2 - Tutor inteligente",
+    description:
+      "Nueva versión de AcademiApp, desarrollada como parte de una tesis de pregrado en la UNSCH. Acompaña al estudiante con un modelo de su dominio del conocimiento, recomendaciones adaptativas y un tutor que responde con conocimiento validado.",
+    tags: ["Flutter", "Dart", "Firebase", "Clean Architecture", "RAG"],
+    featured: true,
+    details: {
+      contributor: "Brayam Espino",
+      role: "Desarrollador principal y responsable de arquitectura",
+      period: "Octubre de 2026 - actualidad",
+      status: "development",
+      context: "Tesis de pregrado, UNSCH",
+      repositoryUrl: "https://github.com/elvisllampasi27-oss/academiapp_v2",
+      projectUrl: null,
+      highlights: [
+        "Arquitectura limpia organizada por módulos: identidad, matrícula, evaluación, modelo del estudiante, motor adaptativo y tutor.",
+        "Modelo del estudiante con Bayesian Knowledge Tracing para estimar el dominio de cada tema.",
+        "Tutor con recuperación aumentada (RAG) que responde solo con conocimiento validado; generación con LLM todavía pendiente.",
+        "Registro, inicio de sesión y perfiles con roles en Firebase Auth y Cloud Firestore, con pruebas automatizadas.",
+      ],
+    },
+  },
+  {
+    repo: "brayam-academiapp",
+    title: "AcademiApp - Plataforma de estudio móvil",
+    description:
+      "Aplicación móvil de preparación académica con contenido por cursos, exámenes, tutor con inteligencia artificial, planes premium y panel de administración, construida sobre servicios en la nube de Firebase.",
+    tags: ["Flutter", "Dart", "Firebase", "Cloud Functions", "Gemini"],
+    featured: true,
+    details: {
+      contributor: "Brayam Espino",
+      role: "Desarrollador principal",
+      period: "2026 - actualidad",
+      status: "development",
+      context: "Proyecto independiente; en mejora continua",
+      repositoryUrl: "https://github.com/elvisllampasi27-oss/academiapp",
+      projectUrl: null,
+      highlights: [
+        "Módulos de contenido, exámenes, quizzes, rendimiento y notificaciones push.",
+        "Tutor con inteligencia artificial mediante Gemini, siempre a través de Cloud Functions.",
+        "Pagos con Culqi y Yape, con revisión de comprobantes desde un panel de administración.",
+        "Reglas de seguridad en Firestore y Storage, y documentación por especificaciones (SDD).",
+      ],
+    },
+  },
+  {
+    repo: "brayam-gestion-dental",
+    title: "Sistema de gestión para clínica dental",
+    description:
+      "Sistema web de gestión para una clínica dental, con panel administrativo, control de acceso por roles y una página pública para los pacientes.",
+    tags: ["React", "Node.js", "Express", "MySQL", "Docker"],
+    featured: false,
+    details: {
+      contributor: "Brayam Espino",
+      role: "Desarrollador principal",
+      period: "2026",
+      status: "prototype",
+      context: "Proyecto para una clínica; nombre reservado",
+      repositoryUrl: null,
+      projectUrl: null,
+      highlights: [
+        "Gestión de pacientes, citas, tratamientos, pagos e historial clínico.",
+        "Roles de administrador, doctor y personal, con permisos diferenciados y registro de actividad.",
+        "API REST con Node.js y Express sobre MySQL, panel en React y despliegue con Docker Compose.",
+        "Integración continua con Jenkins y análisis de calidad con SonarQube.",
+      ],
+    },
+  },
+  {
+    repo: "brayam-yachayai",
+    title: "YachayAI - Práctica para hablar en público",
+    description:
+      "Aplicación móvil en etapa de especificación para que las personas practiquen y mejoren su forma de hablar en público.",
+    tags: ["Flutter", "Dart", "Inteligencia artificial"],
+    featured: false,
+    details: {
+      contributor: "Brayam Espino",
+      role: "Creador y diseñador de la solución",
+      period: "2026",
+      status: "research",
+      context: "Documentación por especificaciones (SDD); desarrollo no iniciado",
+      repositoryUrl: null,
+      projectUrl: null,
+      highlights: [
+        "Definición de requisitos y especificaciones mediante desarrollo guiado por especificaciones (SDD).",
+        "Planteamiento de una app móvil en Flutter para practicar presentaciones orales.",
+        "Los componentes descritos corresponden a la propuesta; no se presenta como producto implementado.",
+      ],
+    },
+  },
+  {
+    repo: "brayam-gestion-academica-hexagonal",
+    title: "Sistema de gestión académica - Arquitectura hexagonal",
+    description:
+      "Aplicación de consola en Java para gestionar estudiantes y cursos aplicando puertos y adaptadores. Los datos se guardan en JSON o en PostgreSQL sin modificar los casos de uso.",
+    tags: ["Java", "Maven", "PostgreSQL", "Arquitectura hexagonal"],
+    featured: false,
+    details: {
+      contributor: "Brayam Espino",
+      role: "Desarrollador",
+      period: "Octubre de 2026",
+      status: "prototype",
+      context: "Laboratorio de Arquitectura de Software, UNSCH",
+      repositoryUrl: "https://github.com/elvisllampasi27-oss/SistemaGestionAcademica-Hexagonal",
+      projectUrl: null,
+      highlights: [
+        "Separación en dominio, aplicación, infraestructura y presentación con puertos de entrada y salida.",
+        "Adaptadores de persistencia intercambiables para JSON y PostgreSQL.",
+        "Validación de identificadores duplicados e inexistentes en los casos de uso.",
+        "Desarrollo por ramas de funcionalidad integradas en la rama principal.",
+      ],
+    },
+  },
+  {
+    repo: "brayam-sistema-gestion-academica",
+    title: "Sistema de gestión académica - Arquitectura en capas",
+    description:
+      "Sistema de consola en Java para gestionar estudiantes, docentes, cursos, matrículas y calificaciones, con generación de reportes y una arquitectura de tres capas.",
+    tags: ["Java", "Maven", "JSON"],
+    featured: false,
+    details: {
+      contributor: "Brayam Espino",
+      role: "Desarrollador",
+      period: "Septiembre de 2026",
+      status: "prototype",
+      context: "Curso de Construcción y Evolución de Software, UNSCH",
+      repositoryUrl: "https://github.com/elvisllampasi27-oss/sistema-gestion-academica",
+      projectUrl: null,
+      highlights: [
+        "Arquitectura de presentación, lógica de negocio y acceso a datos con responsabilidades separadas.",
+        "Gestión de matrículas y calificaciones con reportes agregados.",
+        "Persistencia en archivos JSON mediante repositorios.",
+        "Historial de versiones documentado con releases y registro de cambios.",
+      ],
+    },
+  },
 ];
 
 export const COMPANY_TECHNOLOGIES = [
