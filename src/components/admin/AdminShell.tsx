@@ -147,7 +147,7 @@ function UserMenu({
               className="text-foreground hover:bg-foreground/5 flex w-full items-center gap-2 px-3 py-2.5 text-sm transition"
             >
               <LogOut className="size-4" aria-hidden />
-              Log out
+              Cerrar sesión
             </button>
           </form>
         </div>

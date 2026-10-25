@@ -31,16 +31,16 @@ export const dynamic = "force-dynamic";
 // singleton (handled separately) and Testimonials gets its own moderation
 // panel, so the total card links straight to the queue.
 const cards = [
-  { href: "/admin/projects", label: "Projects", icon: FolderGit2, key: "projects" },
-  { href: "/admin/experiences", label: "Experiences", icon: Briefcase, key: "experiences" },
-  { href: "/admin/skills", label: "Skills", icon: Wrench, key: "skills" },
-  { href: "/admin/services", label: "Services", icon: Sparkles, key: "services" },
-  { href: "/admin/social-links", label: "Social Links", icon: Link2, key: "socialLinks" },
-  { href: "/admin/faqs", label: "FAQs", icon: HelpCircle, key: "faqs" },
-  { href: "/admin/taglines", label: "Taglines", icon: Quote, key: "taglines" },
+  { href: "/admin/projects", label: "Proyectos", icon: FolderGit2, key: "projects" },
+  { href: "/admin/experiences", label: "Trayectoria", icon: Briefcase, key: "experiences" },
+  { href: "/admin/skills", label: "Tecnologías", icon: Wrench, key: "skills" },
+  { href: "/admin/services", label: "Servicios", icon: Sparkles, key: "services" },
+  { href: "/admin/social-links", label: "Redes y contacto", icon: Link2, key: "socialLinks" },
+  { href: "/admin/faqs", label: "Preguntas frecuentes", icon: HelpCircle, key: "faqs" },
+  { href: "/admin/taglines", label: "Lemas", icon: Quote, key: "taglines" },
   {
     href: "/admin/testimonials",
-    label: "Testimonials",
+    label: "Testimonios",
     icon: MessageSquareQuote,
     key: "testimonials",
   },
@@ -98,8 +98,8 @@ export default async function AdminDashboard() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-foreground text-2xl font-semibold">Dashboard</h1>
-        <p className="text-muted mt-1 text-sm">Manage everything that powers your portfolio.</p>
+        <h1 className="text-foreground text-2xl font-semibold">Resumen</h1>
+        <p className="text-muted mt-1 text-sm">Administra el contenido del sitio de Kodenvia.</p>
       </div>
 
       {/* Stat cards — one per content section */}
@@ -137,19 +137,21 @@ export default async function AdminDashboard() {
               <User className="size-5" aria-hidden />
             </span>
             <div>
-              <div className="text-foreground font-semibold">Profile</div>
-              <div className="text-muted text-sm">Your name, bio, and resume link</div>
+              <div className="text-foreground font-semibold">Empresa</div>
+              <div className="text-muted text-sm">
+                Nombre, presentación y documento de la empresa
+              </div>
             </div>
           </div>
           {profileConfigured ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/12 px-2.5 py-1 text-xs font-medium text-emerald-500">
               <CheckCircle2 className="size-3.5" aria-hidden />
-              Configured
+              Configurado
             </span>
           ) : (
             <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/12 px-2.5 py-1 text-xs font-medium text-amber-500">
               <Clock className="size-3.5" aria-hidden />
-              Not set up
+              Sin configurar
             </span>
           )}
         </Link>
@@ -163,16 +165,18 @@ export default async function AdminDashboard() {
               <MessageSquareQuote className="size-5" aria-hidden />
             </span>
             <div>
-              <div className="text-foreground font-semibold">Testimonials</div>
+              <div className="text-foreground font-semibold">Testimonios</div>
               <div className="text-muted text-sm">
-                {approvedCount} live · {pendingCount} pending · {rejectedCount} rejected
+                {approvedCount} {approvedCount === 1 ? "publicado" : "publicados"} · {pendingCount}{" "}
+                {pendingCount === 1 ? "pendiente" : "pendientes"} · {rejectedCount}{" "}
+                {rejectedCount === 1 ? "rechazado" : "rechazados"}
               </div>
             </div>
           </div>
           {pendingCount > 0 ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/12 px-2.5 py-1 text-xs font-medium text-amber-500">
               <Clock className="size-3.5" aria-hidden />
-              {pendingCount} pending
+              {pendingCount} {pendingCount === 1 ? "pendiente" : "pendientes"}
             </span>
           ) : null}
         </Link>
