@@ -62,12 +62,16 @@ beforeEach(() => {
 describe("requireAdmin guard", () => {
   it("throws Unauthorized when there is no session", async () => {
     mockAuth.mockResolvedValue(null);
-    await expect(approveTestimonial(VALID_UUID)).rejects.toThrow("Unauthorized");
+    await expect(approveTestimonial(VALID_UUID)).rejects.toThrow(
+      "No tienes permiso para realizar esta acción.",
+    );
   });
 
   it("throws Unauthorized when session has no user", async () => {
     mockAuth.mockResolvedValue({ user: null });
-    await expect(rejectTestimonial(VALID_UUID)).rejects.toThrow("Unauthorized");
+    await expect(rejectTestimonial(VALID_UUID)).rejects.toThrow(
+      "No tienes permiso para realizar esta acción.",
+    );
   });
 
   it("allows action when session has a user", async () => {

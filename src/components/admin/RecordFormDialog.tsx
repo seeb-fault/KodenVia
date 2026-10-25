@@ -172,13 +172,13 @@ export function RecordFormDialog({
           )}
         >
           <Plus className="size-4" aria-hidden />
-          {triggerLabel ?? "Add new"}
+          {triggerLabel ?? "Añadir registro"}
         </button>
       ) : (
         <button
           type="button"
           onClick={() => setOpen(true)}
-          aria-label="Edit"
+          aria-label="Editar"
           className="text-muted hover:bg-foreground/5 hover:text-foreground rounded-md p-1.5 transition"
         >
           <Pencil className="size-4" aria-hidden />
@@ -208,7 +208,7 @@ export function RecordFormDialog({
               </div>
             </DialogBody>
             <DialogFooter>
-              <SubmitButton>{mode === "create" ? "Create" : "Save changes"}</SubmitButton>
+              <SubmitButton>{mode === "create" ? "Crear" : "Guardar cambios"}</SubmitButton>
             </DialogFooter>
           </form>
         </DialogContent>

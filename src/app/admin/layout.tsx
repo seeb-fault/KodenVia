@@ -19,7 +19,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
 
   return (
     <AdminShell
-      userName={session?.user?.name ?? session?.user?.email ?? "Admin"}
+      userName={session?.user?.name ?? session?.user?.email ?? "Administrador"}
       userImage={session?.user?.image ?? null}
       logoutAction={logout}
     >

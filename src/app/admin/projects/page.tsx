@@ -72,7 +72,7 @@ const fields: AdminField[] = [
     name: "title",
     label: "Nombre del proyecto",
     type: "text",
-    placeholder: "Project title",
+    placeholder: "Nombre del proyecto",
     required: true,
   },
   {
@@ -94,25 +94,20 @@ const fields: AdminField[] = [
     label: "Imagen de portada",
     type: "image",
     folder: "projects",
-    hint:
-      "Shown in the featured showcase and the quick view; falls back to the brand gradient. " +
-      "Uploads always work. A pasted URL must be on a host listed in next.config.js " +
-      "remotePatterns, or next/image serves it as a broken image on the public site.",
+    hint: "Se muestra en los proyectos destacados y en su vista de detalle. Si no hay imagen, se usa el degradado de la marca. Sube un archivo o usa un enlace de imagen permitido por el sitio.",
   },
   {
     name: "screenshots",
     label: "Capturas",
     type: "images",
     max: 6,
-    hint:
-      "Gallery in the quick view, in this order. Uploads always work; a pasted URL must be " +
-      "on a host in next.config.js remotePatterns.",
+    hint: "Se muestran en este orden en la galería del proyecto. Sube archivos o usa enlaces de imágenes permitidos por el sitio.",
   },
   {
     name: "order",
     label: "Orden",
     type: "number",
-    hint: "Lower comes first. The leading featured rows get the large showcase.",
+    hint: "Los números menores aparecen primero. Los primeros proyectos destacados se muestran en formato grande.",
   },
   { name: "featured", label: "Destacado", type: "checkbox" },
   { name: "hidden", label: "Oculto", type: "checkbox" },

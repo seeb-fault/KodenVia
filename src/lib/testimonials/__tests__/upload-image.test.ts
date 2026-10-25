@@ -46,13 +46,13 @@ describe("optimizeAndUploadAvatar", () => {
 
   it("rejects unsupported types", async () => {
     await expect(optimizeAndUploadAvatar(fakeFile("application/pdf", 100))).rejects.toThrow(
-      /Unsupported/,
+      /Formato de imagen no compatible/,
     );
   });
 
   it("rejects oversize files", async () => {
     await expect(optimizeAndUploadAvatar(fakeFile("image/png", 6 * 1024 * 1024))).rejects.toThrow(
-      /too large/,
+      /5 MB/,
     );
   });
 });

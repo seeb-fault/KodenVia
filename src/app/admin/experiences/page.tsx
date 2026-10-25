@@ -25,7 +25,7 @@ const fields: AdminField[] = [
     name: "role",
     label: "Rol o participación",
     type: "text",
-    placeholder: "Software Engineer",
+    placeholder: "Desarrollador de software",
     required: true,
   },
   {

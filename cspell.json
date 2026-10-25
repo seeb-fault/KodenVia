@@ -114,7 +114,8 @@
     "BellaVita",
     "Cosmetología",
     "callback",
-    "seeb"
+    "seeb",
+    "sepáralas"
   ],
   "ignorePaths": [
     "node_modules/**",

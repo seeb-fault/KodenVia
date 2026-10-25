@@ -10,13 +10,13 @@ export const dynamic = "force-dynamic";
 const fields: AdminField[] = [
   {
     name: "text",
-    label: "Tagline",
+    label: "Lema",
     type: "text",
-    placeholder: "Rise above limits",
+    placeholder: "Tecnología que impulsa tu negocio",
     required: true,
   },
-  { name: "order", label: "Order", type: "number" },
-  { name: "active", label: "Active (shown in the rotation)", type: "checkbox" },
+  { name: "order", label: "Orden", type: "number" },
+  { name: "active", label: "Activo (disponible para mostrarse)", type: "checkbox" },
 ];
 
 function parse(formData: FormData) {
@@ -45,20 +45,20 @@ export default async function TaglinesEditor() {
 
   return (
     <AdminCrudPage
-      title="Taglines"
-      description="Shown under the hero, one picked at random per page load. Only active taglines appear."
-      createTitle="Add tagline"
-      editTitle="Edit tagline"
+      title="Lemas"
+      description="Frases de la presentación principal. Se elige una al regenerar la página; solo se muestran las activas."
+      createTitle="Añadir lema"
+      editTitle="Editar lema"
       fields={fields}
       rows={rows}
       toRow={(t) => ({
         primary: t.text,
-        badges: t.active ? null : <Badge tone="warning">Inactive</Badge>,
+        badges: t.active ? null : <Badge tone="warning">Inactivo</Badge>,
       })}
       createAction={create}
       updateAction={update}
       deleteAction={remove}
-      empty="No taglines yet."
+      empty="Todavía no hay lemas."
     />
   );
 }

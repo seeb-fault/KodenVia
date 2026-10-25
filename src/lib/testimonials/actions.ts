@@ -10,7 +10,7 @@ import { revalidatePath } from "next/cache";
 
 async function requireAdmin(): Promise<void> {
   const session = await auth();
-  if (!session?.user) throw new Error("Unauthorized");
+  if (!session?.user) throw new Error("No tienes permiso para realizar esta acción.");
 }
 
 function refresh(): void {

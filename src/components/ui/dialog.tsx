@@ -60,7 +60,7 @@ export const DialogContent = React.forwardRef<
         )}
       >
         <X className="h-4 w-4" aria-hidden />
-        <span className="sr-only">Close</span>
+        <span className="sr-only">Cerrar</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   </DialogPortal>

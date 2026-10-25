@@ -25,18 +25,18 @@ export function buildTestimonialEmail(
   subject: string;
   html: string;
 } {
-  const approveUrl = `${siteUrl}/admin?tab=testimonials&focus=${input.id}`;
+  const approveUrl = `${siteUrl}/admin/testimonials?focus=${input.id}`;
   return {
-    subject: `New testimonial from ${input.name} (pending)`,
+    subject: `Nuevo testimonio de ${input.name} (pendiente)`,
     html: `
-      <h2>New testimonial awaiting moderation</h2>
-      <p><strong>Name:</strong> ${escapeHtml(input.name)}</p>
-      <p><strong>How they know me:</strong> ${escapeHtml(input.relationship)}</p>
+      <h2>Nuevo testimonio pendiente de revisión</h2>
+      <p><strong>Nombre:</strong> ${escapeHtml(input.name)}</p>
+      <p><strong>Relación con Kodenvia:</strong> ${escapeHtml(input.relationship)}</p>
       <blockquote style="border-left:3px solid ${BRAND.deep};padding-left:12px;color:#444">
         ${escapeHtml(input.content)}
       </blockquote>
-      ${input.imageUrl ? `<p><img src="${escapeHtml(input.imageUrl)}" alt="avatar" width="64" height="64" style="border-radius:50%"/></p>` : "<p><em>No image provided.</em></p>"}
-      <p><a href="${approveUrl}" style="background:${BRAND.mid};color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none">Review in admin</a></p>
+      ${input.imageUrl ? `<p><img src="${escapeHtml(input.imageUrl)}" alt="Imagen de perfil" width="64" height="64" style="border-radius:50%"/></p>` : "<p><em>No se adjuntó una imagen.</em></p>"}
+      <p><a href="${approveUrl}" style="background:${BRAND.mid};color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none">Revisar en el administrador</a></p>
     `,
   };
 }

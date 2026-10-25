@@ -18,19 +18,49 @@ import { setSectionVisibility } from "@/app/admin/actions";
 // Each toggleable homepage section, with an icon and a plain description of what
 // it shows - so the control reads as "what appears on my site", not raw keys.
 const SECTIONS: { id: string; label: string; description: string; icon: LucideIcon }[] = [
-  { id: "about", label: "About", description: "Bio, portrait, and GitHub stats", icon: User },
-  { id: "skills", label: "Skills", description: "Your tech stack and tools", icon: Wrench },
-  { id: "experience", label: "Experience", description: "Roles and work history", icon: Briefcase },
-  { id: "projects", label: "Projects", description: "Featured repos and work", icon: FolderGit2 },
-  { id: "services", label: "Services", description: "What you offer clients", icon: Sparkles },
+  {
+    id: "about",
+    label: "Equipo",
+    description: "Presentación y perfiles de los socios",
+    icon: User,
+  },
+  {
+    id: "skills",
+    label: "Tecnologías",
+    description: "Tecnologías y herramientas del equipo",
+    icon: Wrench,
+  },
+  {
+    id: "experience",
+    label: "Trayectoria",
+    description: "Experiencia y trabajos previos de cada socio",
+    icon: Briefcase,
+  },
+  {
+    id: "projects",
+    label: "Proyectos",
+    description: "Proyectos y aportes del equipo",
+    icon: FolderGit2,
+  },
+  {
+    id: "services",
+    label: "Servicios",
+    description: "Soluciones que ofrecemos a los clientes",
+    icon: Sparkles,
+  },
   {
     id: "testimonials",
-    label: "Testimonials",
-    description: "What people say about you",
+    label: "Testimonios",
+    description: "Referencias sobre el trabajo del equipo",
     icon: MessageSquareQuote,
   },
-  { id: "faq", label: "FAQ", description: "Common questions answered", icon: HelpCircle },
-  { id: "contact", label: "Contact", description: "How people reach you", icon: Mail },
+  {
+    id: "faq",
+    label: "Preguntas frecuentes",
+    description: "Respuestas a las dudas más comunes",
+    icon: HelpCircle,
+  },
+  { id: "contact", label: "Contacto", description: "Cómo comunicarse con Kodenvia", icon: Mail },
 ];
 
 // Normalize the stored map to an explicit on/off per section (missing = visible).
@@ -88,7 +118,7 @@ export function SectionVisibilityToggles({ visibility }: { visibility: Record<st
               type="button"
               role="switch"
               aria-checked={on}
-              aria-label={`${s.label} section, ${on ? "visible" : "hidden"}`}
+              aria-label={`Sección ${s.label}: ${on ? "visible" : "oculta"}`}
               onClick={() => toggle(s.id)}
               disabled={pendingId === s.id}
               className={cn(

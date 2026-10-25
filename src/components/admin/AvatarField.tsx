@@ -36,7 +36,10 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
         setOpen(false);
         setDraftUrl("");
       } catch (e) {
-        setStatus({ kind: "error", message: e instanceof Error ? e.message : "Could not save" });
+        setStatus({
+          kind: "error",
+          message: e instanceof Error ? e.message : "No se pudo guardar la imagen",
+        });
       }
     });
   }
@@ -50,10 +53,13 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
       body.append("folder", "avatar");
       const res = await fetch("/api/admin/upload", { method: "POST", body });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Upload failed");
+      if (!res.ok) throw new Error(data.error || "No se pudo subir la imagen");
       commit(data.url);
     } catch (e) {
-      setStatus({ kind: "error", message: e instanceof Error ? e.message : "Upload failed" });
+      setStatus({
+        kind: "error",
+        message: e instanceof Error ? e.message : "No se pudo subir la imagen",
+      });
     } finally {
       setUploading(false);
     }
@@ -71,13 +77,13 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
         type="button"
         onClick={() => url && setViewing(true)}
         disabled={!url}
-        aria-label="View avatar full size"
+        aria-label="Ver imagen de perfil en tamaño completo"
         className={`border-border bg-surface-2 focus-visible:ring-ring group relative block aspect-square w-32 overflow-hidden border focus-visible:ring-2 focus-visible:outline-none enabled:cursor-zoom-in ${SHAPE}`}
       >
         {url ? (
           <Image
             src={url}
-            alt="Current avatar"
+            alt="Imagen de perfil actual"
             fill
             sizes="128px"
             className="object-cover"
@@ -90,7 +96,7 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
         )}
         {url && !busy && (
           <span className="absolute inset-0 flex items-center justify-center gap-1.5 bg-black/55 text-xs font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-            <Expand className="size-3.5" aria-hidden /> View
+            <Expand className="size-3.5" aria-hidden /> Ver
           </span>
         )}
         {busy && (
@@ -101,9 +107,10 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
       </button>
 
       <div className="text-center">
-        <p className="text-foreground text-sm font-medium">Avatar</p>
+        <p className="text-foreground text-sm font-medium">Imagen de perfil</p>
         <p className="text-muted mx-auto mt-0.5 max-w-xs text-xs">
-          Shown in the About section. Saved as soon as you upload, no need to press Save changes.
+          Se muestra en la presentación de la empresa. Se guarda al subirla, sin pulsar Guardar
+          cambios.
         </p>
       </div>
 
@@ -117,7 +124,7 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
           disabled={busy}
           className="border-border text-foreground hover:bg-surface-2 inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition disabled:opacity-60"
         >
-          <UploadCloud className="size-3.5" aria-hidden /> Change
+          <UploadCloud className="size-3.5" aria-hidden /> Cambiar
         </button>
         {url && (
           <button
@@ -126,12 +133,12 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
             disabled={busy}
             className="text-muted hover:text-foreground inline-flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium transition disabled:opacity-60"
           >
-            <ImageOff className="size-3.5" aria-hidden /> Remove
+            <ImageOff className="size-3.5" aria-hidden /> Quitar
           </button>
         )}
         {status.kind === "saved" && !busy && (
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-500">
-            <Check className="size-3.5" aria-hidden /> Saved
+            <Check className="size-3.5" aria-hidden /> Guardada
           </span>
         )}
         {status.kind === "error" && <span className="text-xs text-red-400">{status.message}</span>}
@@ -147,11 +154,11 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
           >
             {uploading ? (
               <>
-                <Loader2 className="size-3.5 animate-spin" aria-hidden /> Uploading…
+                <Loader2 className="size-3.5 animate-spin" aria-hidden /> Subiendo…
               </>
             ) : (
               <>
-                <UploadCloud className="size-3.5" aria-hidden /> Upload image
+                <UploadCloud className="size-3.5" aria-hidden /> Subir imagen
               </>
             )}
           </button>
@@ -162,7 +169,7 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
               type="url"
               value={draftUrl}
               onChange={(e) => setDraftUrl(e.target.value)}
-              placeholder="https://… image URL"
+              placeholder="https://… enlace de la imagen"
               className="border-border bg-background text-foreground placeholder:text-muted/70 focus:ring-ring min-w-0 flex-1 rounded-lg border px-3 py-1.5 text-xs transition focus:border-transparent focus:ring-2 focus:outline-none"
             />
             <button
@@ -171,7 +178,7 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
               disabled={busy || draftUrl.trim() === ""}
               className="border-border text-foreground hover:bg-surface-2 shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition disabled:opacity-40"
             >
-              Use
+              Usar
             </button>
           </div>
         </div>
@@ -180,7 +187,7 @@ export function AvatarField({ defaultValue = "" }: { defaultValue?: string }) {
       {url && (
         <ImageLightbox
           src={url}
-          alt="Current avatar"
+          alt="Imagen de perfil actual"
           open={viewing}
           onClose={() => setViewing(false)}
           unoptimized

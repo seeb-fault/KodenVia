@@ -36,45 +36,54 @@ export default async function ProfileEditor() {
 
   return (
     <div className="flex flex-col gap-8">
-      <AdminPageHeader title="Profile" description="Your name, bio, roles, and links." />
+      <AdminPageHeader
+        title="Empresa"
+        description="Nombre, presentación, especialidades y enlaces de Kodenvia."
+      />
 
       <Panel>
         <form action={action} className="flex flex-col gap-4">
           <AvatarField defaultValue={row?.avatarUrl ?? ""} />
 
-          <Field label="Name">
-            <Input name="name" defaultValue={row?.name} placeholder="Name" />
+          <Field label="Nombre">
+            <Input name="name" defaultValue={row?.name} placeholder="Nombre de la empresa" />
           </Field>
-          <Field label="Bio">
-            <Textarea name="bio" defaultValue={row?.bio} rows={4} placeholder="Bio" />
+          <Field label="Presentación">
+            <Textarea
+              name="bio"
+              defaultValue={row?.bio}
+              rows={4}
+              placeholder="Describe la empresa y su propuesta de valor"
+            />
           </Field>
           <Field
-            label="Roles"
-            hint="Shown in the scrolling hero marquee. One per line, or comma-separated."
+            label="Especialidades"
+            hint="Se muestran en la presentación principal. Escribe una por línea o sepáralas por comas."
           >
             <Textarea
               name="roles"
               defaultValue={(row?.roles ?? []).join("\n")}
               rows={3}
-              placeholder={
-                "Software Development Engineer\nFull Stack Developer\nOpen Source Contributor"
-              }
+              placeholder={"Desarrollo web\nAplicaciones a medida\nAutomatización de procesos"}
             />
           </Field>
-          <Field label="Resume URL" hint="Full https URL to your resume/CV.">
+          <Field
+            label="Enlace al documento de presentación"
+            hint="URL HTTPS completa al documento o currículum que quieras compartir."
+          >
             <Input name="resumeUrl" defaultValue={row?.resumeUrl ?? ""} placeholder="https://…" />
           </Field>
           <Field
-            label="Hero tagline"
-            hint="Short phrase shown beside the glowing dot above your name. Leave empty to hide."
+            label="Lema de la presentación"
+            hint="Frase breve sobre el nombre de la empresa. Déjala vacía para ocultarla."
           >
             <Input
               name="heroTagline"
               defaultValue={row?.heroTagline ?? ""}
-              placeholder="AI-native engineering"
+              placeholder="Tecnología que impulsa tu negocio"
             />
           </Field>
-          <SubmitButton>Save changes</SubmitButton>
+          <SubmitButton>Guardar cambios</SubmitButton>
         </form>
       </Panel>
     </div>

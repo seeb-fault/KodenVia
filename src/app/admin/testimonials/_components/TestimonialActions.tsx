@@ -54,7 +54,7 @@ export default function TestimonialActions({ testimonial }: { testimonial: Admin
     { label: "GitHub", url: t.githubUrl },
     { label: "X", url: t.xUrl },
     { label: "Instagram", url: t.instagramUrl },
-    { label: "Website", url: t.websiteUrl },
+    { label: "Sitio web", url: t.websiteUrl },
   ].filter((s) => s.url);
 
   return (
@@ -64,13 +64,13 @@ export default function TestimonialActions({ testimonial }: { testimonial: Admin
         onClick={() => setOpen(true)}
         className="border-border text-foreground hover:bg-surface-2 shrink-0 self-start rounded-lg border px-3 py-1.5 text-xs font-medium transition"
       >
-        View
+        Ver detalle
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Testimonial</DialogTitle>
+            <DialogTitle>Testimonio</DialogTitle>
           </DialogHeader>
           <DialogBody>
             <div className="flex flex-col gap-4">
@@ -83,8 +83,8 @@ export default function TestimonialActions({ testimonial }: { testimonial: Admin
                 </div>
                 <div className="ml-auto flex flex-wrap items-center justify-end gap-1.5">
                   <StatusBadge status={t.status} />
-                  {t.featured ? <Badge tone="brand">Featured</Badge> : null}
-                  {t.duplicate ? <Badge tone="warning">Possible duplicate</Badge> : null}
+                  {t.featured ? <Badge tone="brand">Destacado</Badge> : null}
+                  {t.duplicate ? <Badge tone="warning">Posible duplicado</Badge> : null}
                 </div>
               </div>
 
@@ -113,55 +113,57 @@ export default function TestimonialActions({ testimonial }: { testimonial: Admin
           <DialogFooter className="flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-end">
             {t.status !== "approved" ? (
               <ConfirmButton
-                title="Approve testimonial?"
-                description="It will become publicly visible on your portfolio."
-                confirmLabel="Approve"
+                title="¿Aprobar este testimonio?"
+                description="Se publicará en el sitio de Kodenvia."
+                confirmLabel="Aprobar"
                 tone="brand"
                 onConfirm={() => approveTestimonial(t.id)}
                 className={`${actionBtn} bg-emerald-600 text-white hover:bg-emerald-700`}
               >
                 <Check className="size-4" aria-hidden />
-                Approve
+                Aprobar
               </ConfirmButton>
             ) : null}
             {t.status !== "rejected" ? (
               <ConfirmButton
-                title="Reject testimonial?"
-                description="It will be hidden from the site. You can approve it later."
-                confirmLabel="Reject"
+                title="¿Rechazar este testimonio?"
+                description="No se mostrará en el sitio. Puedes aprobarlo más adelante."
+                confirmLabel="Rechazar"
                 tone="danger"
                 onConfirm={() => rejectTestimonial(t.id)}
                 className={`${actionBtn} bg-amber-600 text-white hover:bg-amber-700`}
               >
                 <X className="size-4" aria-hidden />
-                Reject
+                Rechazar
               </ConfirmButton>
             ) : null}
             <ConfirmButton
-              title={t.featured ? "Unfeature testimonial?" : "Feature testimonial?"}
+              title={
+                t.featured ? "¿Quitar este testimonio de destacados?" : "¿Destacar este testimonio?"
+              }
               description={
                 t.featured
-                  ? "It will no longer be highlighted first."
-                  : "It will be highlighted at the front of the list."
+                  ? "Dejará de tener prioridad en la lista."
+                  : "Tendrá prioridad y aparecerá al inicio de la lista."
               }
-              confirmLabel={t.featured ? "Unfeature" : "Feature"}
+              confirmLabel={t.featured ? "Quitar de destacados" : "Destacar"}
               tone="neutral"
               onConfirm={() => toggleFeatured(t.id, !t.featured)}
               className={`${actionBtn} border-border text-foreground hover:bg-surface-2 border`}
             >
               <Star className="size-4" aria-hidden />
-              {t.featured ? "Unfeature" : "Feature"}
+              {t.featured ? "Quitar de destacados" : "Destacar"}
             </ConfirmButton>
             <ConfirmButton
-              title="Delete testimonial?"
-              description="This permanently removes the testimonial. This cannot be undone."
-              confirmLabel="Delete"
+              title="¿Eliminar este testimonio?"
+              description="El testimonio se eliminará de forma permanente. Esta acción no se puede deshacer."
+              confirmLabel="Eliminar"
               tone="danger"
               onConfirm={() => deleteTestimonial(t.id)}
               className={`${actionBtn} text-red-600 hover:bg-red-500/10`}
             >
               <Trash2 className="size-4" aria-hidden />
-              Delete
+              Eliminar
             </ConfirmButton>
           </DialogFooter>
         </DialogContent>
@@ -171,11 +173,11 @@ export default function TestimonialActions({ testimonial }: { testimonial: Admin
 }
 
 function StatusBadge({ status }: { status: AdminTestimonial["status"] }) {
-  if (status === "pending") return <Badge tone="warning">Pending</Badge>;
-  if (status === "approved") return <Badge tone="success">Approved</Badge>;
+  if (status === "pending") return <Badge tone="warning">Pendiente</Badge>;
+  if (status === "approved") return <Badge tone="success">Aprobado</Badge>;
   return (
     <span className="inline-flex items-center rounded-full bg-red-500/12 px-2 py-0.5 text-xs font-medium text-red-500">
-      Rejected
+      Rechazado
     </span>
   );
 }
