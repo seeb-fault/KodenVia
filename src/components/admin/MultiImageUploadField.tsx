@@ -41,11 +41,11 @@ export function MultiImageUploadField({
         body.append("folder", "projects");
         const res = await fetch("/api/admin/upload", { method: "POST", body });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Upload failed");
+        if (!res.ok) throw new Error(data.error || "No se pudo subir la imagen");
         setUrls((prev) => [...prev, data.url]);
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Upload failed");
+      setError(e instanceof Error ? e.message : "No se pudo subir la imagen");
     } finally {
       setUploading(false);
     }
@@ -77,7 +77,7 @@ export function MultiImageUploadField({
               <span className="text-muted min-w-0 flex-1 truncate text-xs">{url}</span>
               <button
                 type="button"
-                aria-label={`Move screenshot ${i + 1} earlier`}
+                aria-label={`Mover la captura ${i + 1} hacia el inicio`}
                 disabled={i === 0}
                 onClick={() => move(i, i - 1)}
                 className="text-muted hover:text-foreground p-1 disabled:opacity-30"
@@ -86,7 +86,7 @@ export function MultiImageUploadField({
               </button>
               <button
                 type="button"
-                aria-label={`Move screenshot ${i + 1} later`}
+                aria-label={`Mover la captura ${i + 1} hacia el final`}
                 disabled={i === urls.length - 1}
                 onClick={() => move(i, i + 1)}
                 className="text-muted hover:text-foreground p-1 disabled:opacity-30"
@@ -95,7 +95,7 @@ export function MultiImageUploadField({
               </button>
               <button
                 type="button"
-                aria-label={`Remove screenshot ${i + 1}`}
+                aria-label={`Quitar la captura ${i + 1}`}
                 // By index, not value: the same URL can legitimately appear twice, and
                 // filtering by value removed every copy.
                 onClick={() => setUrls((prev) => prev.filter((_, j) => j !== i))}
@@ -117,11 +117,11 @@ export function MultiImageUploadField({
         >
           {uploading ? (
             <>
-              <Loader2 className="size-3.5 animate-spin" aria-hidden /> Uploading…
+              <Loader2 className="size-3.5 animate-spin" aria-hidden /> Subiendo…
             </>
           ) : (
             <>
-              <UploadCloud className="size-3.5" aria-hidden /> Upload screenshots
+              <UploadCloud className="size-3.5" aria-hidden /> Subir capturas
             </>
           )}
         </button>
@@ -130,7 +130,7 @@ export function MultiImageUploadField({
           type="url"
           value={pending}
           onChange={(e) => setPending(e.target.value)}
-          placeholder="…or paste a URL"
+          placeholder="…o pega un enlace"
           className="border-border bg-background text-foreground placeholder:text-muted/70 focus:ring-ring min-w-0 flex-1 rounded-lg border px-3 py-1.5 text-xs transition focus:border-transparent focus:ring-2 focus:outline-none"
         />
         <button
@@ -142,7 +142,7 @@ export function MultiImageUploadField({
           }}
           className="border-border text-foreground hover:bg-surface-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition disabled:opacity-60"
         >
-          Add
+          Añadir
         </button>
       </div>
 
@@ -160,8 +160,8 @@ export function MultiImageUploadField({
       />
 
       <span className="text-muted text-xs">
-        {urls.length} of {max}
-        {atLimit && " (limit reached)"}
+        {urls.length} de {max}
+        {atLimit && " (límite alcanzado)"}
       </span>
       {error && <span className="text-xs text-red-400">{error}</span>}
     </div>

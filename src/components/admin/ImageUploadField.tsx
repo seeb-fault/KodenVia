@@ -14,7 +14,7 @@ export function ImageUploadField({
   name,
   folder,
   defaultValue = "",
-  placeholder = "https://… or upload",
+  placeholder = "https://… o sube una imagen",
   previewRounded = "rounded-lg",
 }: {
   name: string;
@@ -38,10 +38,10 @@ export function ImageUploadField({
       body.append("folder", folder);
       const res = await fetch("/api/admin/upload", { method: "POST", body });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Upload failed");
+      if (!res.ok) throw new Error(data.error || "No se pudo subir la imagen");
       setUrl(data.url);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Upload failed");
+      setError(e instanceof Error ? e.message : "No se pudo subir la imagen");
     } finally {
       setUploading(false);
     }
@@ -98,11 +98,11 @@ export function ImageUploadField({
           >
             {uploading ? (
               <>
-                <Loader2 className="size-3.5 animate-spin" aria-hidden /> Uploading…
+                <Loader2 className="size-3.5 animate-spin" aria-hidden /> Subiendo…
               </>
             ) : (
               <>
-                <UploadCloud className="size-3.5" aria-hidden /> Upload image
+                <UploadCloud className="size-3.5" aria-hidden /> Subir imagen
               </>
             )}
           </button>
