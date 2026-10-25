@@ -110,6 +110,8 @@ Configura una base PostgreSQL de producción, las variables del entorno y el dom
 
 El proyecto incluye configuración para Vercel. Los cambios desde el administrador actualizan el sitio; la regeneración periódica está fijada en 12 horas para controlar consultas y costes de base de datos. No publiques los testimonios de demostración como referencias verificadas.
 
+Producción: [kodenvia.vercel.app](https://kodenvia.vercel.app). El workflow CD publica únicamente un commit de `main` aprobado por CI, aplica las migraciones mediante una conexión privada de Supabase y comprueba las rutas después del despliegue. Consulta la [guía de publicación y CD](docs/DEPLOYMENT.md) para configurar los secretos y activar `CD_ENABLED=true`.
+
 ## GitHub y Pull Requests
 
 Repositorio: [seeb-fault/KodenVia](https://github.com/seeb-fault/KodenVia). La rama principal es `main`. Trabajamos con ramas y Pull Requests, usando títulos Conventional Commits y un incremento de versión en `package.json` para cada PR.
