@@ -52,12 +52,12 @@ describe("requireAdmin guard", () => {
         hidden: false,
         screenshots: [],
       }),
-    ).rejects.toThrow("Unauthorized");
+    ).rejects.toThrow("No tienes permiso para realizar esta acción.");
   });
 
   it("throws Unauthorized when session has no user", async () => {
     mockAuth.mockResolvedValue({ user: null });
-    await expect(deleteProject(1)).rejects.toThrow("Unauthorized");
+    await expect(deleteProject(1)).rejects.toThrow("No tienes permiso para realizar esta acción.");
   });
 
   it("allows action when session has a user", async () => {
@@ -159,7 +159,7 @@ describe("taglines", () => {
   it("blocks creating a tagline without a session", async () => {
     mockAuth.mockResolvedValue(null);
     await expect(createTagline({ text: "Hi", active: true, order: 0 })).rejects.toThrow(
-      "Unauthorized",
+      "No tienes permiso para realizar esta acción.",
     );
   });
 

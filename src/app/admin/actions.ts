@@ -38,7 +38,7 @@ import { isAllowedImageHost } from "@/lib/image-hosts";
 
 async function requireAdmin() {
   const session = await auth();
-  if (!session?.user) throw new Error("Unauthorized");
+  if (!session?.user) throw new Error("No tienes permiso para realizar esta acción.");
 }
 
 // ---------- Profile (singleton row) ----------
@@ -71,10 +71,13 @@ export async function setProfileAvatar(url: string | null): Promise<void> {
   const avatarUrl = profileInsertSchema.shape.avatarUrl.parse(url || null) ?? null;
   // Rejected here rather than on render: a bad host fails silently on the public page only.
   if (avatarUrl && !isAllowedImageHost(avatarUrl)) {
-    throw new Error("That image host is not allowed. Upload the file instead of linking to it.");
+    throw new Error(
+      "Ese sitio de imágenes no está permitido. Sube el archivo en lugar de pegar su enlace.",
+    );
   }
   const [existing] = await db.select({ id: profile.id }).from(profile).limit(1);
-  if (!existing) throw new Error("No profile row to attach an avatar to. Seed the profile first.");
+  if (!existing)
+    throw new Error("Primero debes crear el perfil de la empresa para guardar una imagen.");
   await db
     .update(profile)
     .set({ avatarUrl, updatedAt: new Date() })

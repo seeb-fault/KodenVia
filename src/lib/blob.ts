@@ -42,10 +42,10 @@ export async function optimizeAndUploadImage(
   resize: ResizeOptions,
 ): Promise<string> {
   if (!ALLOWED.includes(file.type)) {
-    throw new Error(`Unsupported image type: ${file.type}`);
+    throw new Error(`Formato de imagen no compatible: ${file.type}`);
   }
   if (file.size > MAX_BYTES) {
-    throw new Error("Image too large (max 5MB)");
+    throw new Error("La imagen supera el máximo de 5 MB.");
   }
 
   const input = Buffer.from(await file.arrayBuffer());
@@ -84,7 +84,7 @@ async function putRawSvg(file: File, folder: BlobFolder): Promise<string> {
  */
 export async function uploadIcon(file: File, folder: BlobFolder): Promise<string> {
   if (file.size > MAX_BYTES) {
-    throw new Error("Image too large (max 5MB)");
+    throw new Error("La imagen supera el máximo de 5 MB.");
   }
   if (file.type === SVG_TYPE) return putRawSvg(file, folder);
   // Raster icons: fit inside a 128px box (preserve aspect), WebP.
@@ -98,7 +98,7 @@ export async function uploadIcon(file: File, folder: BlobFolder): Promise<string
  */
 export async function uploadAvatar(file: File): Promise<string> {
   if (file.size > MAX_BYTES) {
-    throw new Error("Image too large (max 5MB)");
+    throw new Error("La imagen supera el máximo de 5 MB.");
   }
   if (file.type === SVG_TYPE) return putRawSvg(file, BLOB_FOLDERS.avatar);
   return optimizeAndUploadImage(file, BLOB_FOLDERS.avatar, {

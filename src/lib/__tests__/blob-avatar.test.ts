@@ -57,7 +57,7 @@ describe("uploadAvatar", () => {
   });
 
   it("rejects oversize files", async () => {
-    await expect(uploadAvatar(fakeFile("image/png", 6 * 1024 * 1024))).rejects.toThrow(/too large/);
+    await expect(uploadAvatar(fakeFile("image/png", 6 * 1024 * 1024))).rejects.toThrow(/5 MB/);
   });
 
   it("leaves icons on the 128px box", async () => {

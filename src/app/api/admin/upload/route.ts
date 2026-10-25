@@ -25,7 +25,7 @@ const ALLOWED_FOLDERS = new Set<BlobFolder>([
 export async function POST(req: NextRequest) {
   const session = await auth();
   if (!session?.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "No tienes permiso para subir imágenes." }, { status: 401 });
   }
 
   const formData = await req.formData();
@@ -33,10 +33,10 @@ export async function POST(req: NextRequest) {
   const folder = String(formData.get("folder") || "") as BlobFolder;
 
   if (!(file instanceof File) || file.size === 0) {
-    return NextResponse.json({ error: "No file provided" }, { status: 400 });
+    return NextResponse.json({ error: "Selecciona un archivo para subir." }, { status: 400 });
   }
   if (!ALLOWED_FOLDERS.has(folder)) {
-    return NextResponse.json({ error: "Invalid folder" }, { status: 400 });
+    return NextResponse.json({ error: "El destino de la imagen no es válido." }, { status: 400 });
   }
 
   try {
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url }, { status: 201 });
   } catch (err) {
     // Surface the size/type validation message without leaking internals.
-    const message = err instanceof Error ? err.message : "Upload failed";
+    const message = err instanceof Error ? err.message : "No se pudo subir la imagen.";
     return NextResponse.json({ error: message }, { status: 400 });
   }
 }

@@ -37,7 +37,7 @@ export const projectInsertSchema = z.object({
   repo: z
     .string()
     .min(1)
-    .regex(/^[\w.-]+$/, "repo must be a GitHub slug, not a URL"),
+    .regex(/^[\w.-]+$/, "Usa un identificador de repositorio, no una URL"),
   title: z.string().min(1),
   customBlurb: z.string().nullable().optional(),
   tags: z.array(z.string()).default([]),
