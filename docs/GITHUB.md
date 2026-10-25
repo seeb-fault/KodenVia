@@ -5,12 +5,12 @@ Repositorio: [seeb-fault/KodenVia](https://github.com/seeb-fault/KodenVia). Rama
 ## Ramas y Pull Requests
 
 1. Actualiza `main` con `git pull --ff-only` y crea una rama, por ejemplo `git switch -c feat/nueva-funcion`.
-2. Realiza un cambio concreto y actualiza `version` en `package.json`.
+2. Separa cada cambio concreto en su propio commit, con un mensaje que explique qué cambió y por qué. Actualiza `version` en `package.json` una vez por PR.
 3. Ejecuta lint, formato, ortografía, tipos y pruebas. Para cambios que afecten a la aplicación, comprueba también la compilación y las pruebas de navegador.
 4. Publica la rama y abre una PR hacia `main`. Describe el problema, el resultado y la validación.
 5. Usa un título Conventional Commit de hasta 50 caracteres, por ejemplo `fix: correct contact link`.
 6. Espera a que pasen `quality`, `package.json version bumped` y `PR title`. Revisa el diff y solicita la revisión del otro socio cuando corresponda.
-7. Fusiona con squash. Elimina la rama cuando la PR esté integrada.
+7. Fusiona con **Create a merge commit** para conservar los commits individuales. No uses squash para reunir cambios independientes. Elimina la rama cuando la PR esté integrada.
 
 Las plantillas de Issues permiten reportar errores y proponer mejoras. La plantilla de PR pide un resumen y su validación; las etiquetas se asignan según los archivos modificados.
 
@@ -25,7 +25,7 @@ El informe de Playwright queda disponible como artefacto durante siete días. CI
 La cuenta que prepara esta publicación, `santiago-noe`, tiene acceso de escritura pero no de administración. El propietario `seeb-fault` debe configurar estas opciones si desea que GitHub las haga obligatorias:
 
 - En Settings, Rules o Branches, protege `main` y exige Pull Requests, resolución de conversaciones y los checks `quality`, `package.json version bumped` y `PR title`. Desactiva force pushes y eliminación de la rama principal.
-- En Settings, General, permite squash merge y desactiva los otros métodos si quieres imponer un historial lineal.
+- En Settings, General, conserva habilitado **Allow merge commits** para mantener el detalle de cada cambio al fusionar una PR.
 - Cuando ambos socios tengan acceso de escritura y puedan revisar, exige una aprobación por PR.
 - Activa Discussions en Settings, General si van a usar preguntas y respuestas de la comunidad.
 

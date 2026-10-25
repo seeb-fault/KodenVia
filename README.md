@@ -114,7 +114,7 @@ Producción: [kodenvia.vercel.app](https://kodenvia.vercel.app). El workflow CD 
 
 ## GitHub y Pull Requests
 
-Repositorio: [seeb-fault/KodenVia](https://github.com/seeb-fault/KodenVia). La rama principal es `main`. Trabajamos con ramas y Pull Requests, usando títulos Conventional Commits y un incremento de versión en `package.json` para cada PR.
+Repositorio: [seeb-fault/KodenVia](https://github.com/seeb-fault/KodenVia). La rama principal es `main`. Trabajamos con ramas y Pull Requests, usando títulos Conventional Commits y un incremento de versión en `package.json` para cada PR. Cada cambio concreto tiene su propio commit explicativo; las PRs se fusionan con un commit de fusión para conservar ese detalle, sin squash.
 
 CI valida formato, ortografía, lint, tipos, pruebas unitarias, compilación webpack, rutas, rendimiento y pruebas de navegador en producción con PostgreSQL temporal. No necesita credenciales de la base de producción ni secretos de servicios externos. Las releases se generan después de que CI apruebe un push a `main`.
 

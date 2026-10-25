@@ -23,11 +23,12 @@ La rama principal es `main` y no se trabaja directamente sobre ella. Crea una ra
 ## Commits y Pull Requests
 
 - Los títulos siguen Conventional Commits, por ejemplo: `feat: agregar sección de servicios`.
+- Crea un commit por cada cambio concreto y explica qué modificaste y por qué. Conserva esos commits al fusionar la PR mediante **Create a merge commit**, sin squash.
 - Cada Pull Request incrementa la versión en `package.json`:
   - `fix` o `docs`: versión de parche (por ejemplo, 2.6.1 → 2.6.2).
   - `feat`: versión menor (por ejemplo, 2.6.1 → 2.7.0).
 - Describe qué cambia y cómo probarlo.
-- Si trabajaste con otra persona, agrégala como coautora al final del mensaje del commit.
+- Conserva la autoría real de cada commit y respeta el formato de `.gitmessage`, sin añadir trailers de autoría.
 
 ## Comprobaciones
 
