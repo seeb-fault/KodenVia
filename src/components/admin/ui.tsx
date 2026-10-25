@@ -147,7 +147,7 @@ export type AdminRow = {
 export function RecordList({
   rows,
   deleteAction,
-  empty = "Nothing here yet.",
+  empty = "Todavía no hay registros.",
 }: {
   rows: AdminRow[];
   deleteAction: (formData: FormData) => Promise<void>;

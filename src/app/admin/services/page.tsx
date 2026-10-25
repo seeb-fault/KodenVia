@@ -7,30 +7,30 @@ import { type AdminField } from "@/components/admin/RecordFormDialog";
 export const dynamic = "force-dynamic";
 
 const fields: AdminField[] = [
-  { name: "title", label: "Title", type: "text", placeholder: "Web Development", required: true },
+  { name: "title", label: "Nombre", type: "text", placeholder: "Desarrollo web", required: true },
   {
     name: "description",
-    label: "Full description",
+    label: "Descripción completa",
     type: "textarea",
     rows: 3,
-    placeholder: "Detailed description",
+    placeholder: "Describe el servicio y su alcance",
     required: true,
   },
   {
     name: "shortDescription",
-    label: "Short description",
+    label: "Descripción breve",
     type: "text",
-    placeholder: "One-line summary",
-    hint: "Optional — shown on the card.",
+    placeholder: "Resumen en una línea",
+    hint: "Opcional. Se muestra en la tarjeta.",
   },
   {
     name: "icon",
-    label: "Icon path",
+    label: "Ruta del icono",
     type: "text",
     placeholder: "/icons/web.svg",
-    hint: "Optional",
+    hint: "Opcional",
   },
-  { name: "order", label: "Order", type: "number" },
+  { name: "order", label: "Orden", type: "number" },
 ];
 
 function parse(formData: FormData) {
@@ -61,10 +61,10 @@ export default async function ServicesEditor() {
 
   return (
     <AdminCrudPage
-      title="Services"
-      description="What you offer."
-      createTitle="Add service"
-      editTitle="Edit service"
+      title="Servicios"
+      description="Servicios que ofrece Kodenvia."
+      createTitle="Añadir servicio"
+      editTitle="Editar servicio"
       fields={fields}
       rows={rows}
       toRow={(s) => ({
@@ -74,7 +74,7 @@ export default async function ServicesEditor() {
       createAction={create}
       updateAction={update}
       deleteAction={remove}
-      empty="No services yet."
+      empty="Todavía no hay servicios."
     />
   );
 }

@@ -65,7 +65,7 @@ export function ConfirmButton({
                 "border-border bg-surface text-foreground hover:bg-surface-2 rounded-lg border px-4 py-2 text-sm font-medium transition",
               )}
             >
-              Cancel
+              Cancelarar
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={() => startTransition(() => void onConfirm())}

@@ -7,22 +7,22 @@ import { type AdminField } from "@/components/admin/RecordFormDialog";
 export const dynamic = "force-dynamic";
 
 const fields: AdminField[] = [
-  { name: "platform", label: "Platform", type: "text", placeholder: "GitHub", required: true },
+  { name: "platform", label: "Plataforma", type: "text", placeholder: "GitHub", required: true },
   {
     name: "username",
-    label: "Username",
+    label: "Nombre de usuario",
     type: "text",
     placeholder: "santiago-noe",
-    hint: "Optional",
+    hint: "Opcional",
   },
   {
     name: "url",
-    label: "URL",
+    label: "Enlace",
     type: "url",
     placeholder: "https://github.com/santiago-noe",
     required: true,
   },
-  { name: "order", label: "Order", type: "number" },
+  { name: "order", label: "Orden", type: "number" },
 ];
 
 function parse(formData: FormData) {
@@ -52,10 +52,10 @@ export default async function SocialLinksEditor() {
 
   return (
     <AdminCrudPage
-      title="Social Links"
-      description="Where people can find you."
-      createTitle="Add social link"
-      editTitle="Edit social link"
+      title="Redes y contacto"
+      description="Enlaces y canales de contacto de la empresa."
+      createTitle="Añadir enlace"
+      editTitle="Editar enlace"
       fields={fields}
       rows={rows}
       toRow={(l) => ({
@@ -65,7 +65,7 @@ export default async function SocialLinksEditor() {
       createAction={create}
       updateAction={update}
       deleteAction={remove}
-      empty="No social links yet."
+      empty="Todavía no hay enlaces."
     />
   );
 }

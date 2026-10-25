@@ -9,20 +9,20 @@ export const dynamic = "force-dynamic";
 const fields: AdminField[] = [
   {
     name: "question",
-    label: "Question",
+    label: "Pregunta",
     type: "text",
     placeholder: "¿Qué servicios ofrece Kodenvia?",
     required: true,
   },
   {
     name: "answer",
-    label: "Answer",
+    label: "Respuesta",
     type: "textarea",
     rows: 4,
-    placeholder: "A clear, concise answer.",
+    placeholder: "Una respuesta clara y breve.",
     required: true,
   },
-  { name: "order", label: "Order", type: "number" },
+  { name: "order", label: "Orden", type: "number" },
 ];
 
 function parse(formData: FormData) {
@@ -51,10 +51,10 @@ export default async function FaqsEditor() {
 
   return (
     <AdminCrudPage
-      title="FAQs"
-      description="Questions shown on the site and to AI crawlers."
-      createTitle="Add FAQ"
-      editTitle="Edit FAQ"
+      title="Preguntas frecuentes"
+      description="Respuestas a las preguntas más comunes sobre Kodenvia."
+      createTitle="Añadir pregunta"
+      editTitle="Editar pregunta"
       fields={fields}
       rows={rows}
       toRow={(f) => ({
@@ -64,7 +64,7 @@ export default async function FaqsEditor() {
       createAction={create}
       updateAction={update}
       deleteAction={remove}
-      empty="No FAQs yet."
+      empty="Todavía no hay preguntas frecuentes."
     />
   );
 }

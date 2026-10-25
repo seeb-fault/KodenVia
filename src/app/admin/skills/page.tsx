@@ -7,35 +7,47 @@ import { type AdminField } from "@/components/admin/RecordFormDialog";
 
 export const dynamic = "force-dynamic";
 
+const levelLabels: Record<string, string> = {
+  Expert: "Experto",
+  Intermediate: "Intermedio",
+  Beginner: "Principiante",
+};
+
 const fields: AdminField[] = [
-  { name: "name", label: "Skill name", type: "text", placeholder: "React.js", required: true },
+  {
+    name: "name",
+    label: "Nombre de la tecnología",
+    type: "text",
+    placeholder: "React.js",
+    required: true,
+  },
   {
     name: "category",
-    label: "Category",
+    label: "Categoría",
     type: "text",
-    placeholder: "Frontend Development",
+    placeholder: "Desarrollo de interfaces",
     required: true,
   },
   {
     name: "iconPath",
-    label: "Icon",
+    label: "Icono",
     type: "image",
     folder: "skills",
-    placeholder: "https://… or upload (SVG/PNG)",
-    hint: "Upload an icon or paste a URL. SVG stays crisp; existing /skills/*.svg still work.",
+    placeholder: "https://… o sube un icono SVG/PNG",
+    hint: "Sube un icono o pega un enlace. Puedes conservar las rutas de los iconos existentes.",
   },
   {
     name: "level",
-    label: "Level",
+    label: "Nivel",
     type: "select",
     options: [
-      { value: "", label: "No level" },
-      { value: "Expert", label: "Expert" },
-      { value: "Intermediate", label: "Intermediate" },
-      { value: "Beginner", label: "Beginner" },
+      { value: "", label: "Sin nivel" },
+      { value: "Expert", label: "Experto" },
+      { value: "Intermediate", label: "Intermedio" },
+      { value: "Beginner", label: "Principiante" },
     ],
   },
-  { name: "order", label: "Order", type: "number" },
+  { name: "order", label: "Orden", type: "number" },
 ];
 
 function parse(formData: FormData) {
@@ -69,21 +81,21 @@ export default async function SkillsEditor() {
 
   return (
     <AdminCrudPage
-      title="Skills"
-      description="Tools and technologies, grouped by category."
-      createTitle="Add skill"
-      editTitle="Edit skill"
+      title="Tecnologías"
+      description="Herramientas y tecnologías organizadas por categoría."
+      createTitle="Añadir tecnología"
+      editTitle="Editar tecnología"
       fields={fields}
       rows={rows}
       toRow={(s) => ({
         primary: s.name,
         meta: s.category,
-        badges: s.level ? <Badge>{s.level}</Badge> : null,
+        badges: s.level ? <Badge>{levelLabels[s.level] ?? s.level}</Badge> : null,
       })}
       createAction={create}
       updateAction={update}
       deleteAction={remove}
-      empty="No skills yet."
+      empty="Todavía no hay tecnologías."
     />
   );
 }

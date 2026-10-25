@@ -18,13 +18,13 @@ export function RecordDeleteButton({
 }) {
   return (
     <ConfirmButton
-      title="Delete this item?"
+      title="¿Eliminar este registro?"
       description={
         label
-          ? `“${label}” will be permanently removed. This cannot be undone.`
-          : "This will be permanently removed. This cannot be undone."
+          ? `“${label}” se eliminará de forma permanente. Esta acción no se puede deshacer.`
+          : "El registro se eliminará de forma permanente. Esta acción no se puede deshacer."
       }
-      confirmLabel="Delete"
+      confirmLabel="Eliminar"
       tone="danger"
       onConfirm={() => {
         const fd = new FormData();
@@ -34,7 +34,7 @@ export function RecordDeleteButton({
       className="text-muted rounded-md p-1.5 text-xs font-medium transition hover:bg-red-500/10 hover:text-red-500"
     >
       <Trash2 className="size-4" aria-hidden />
-      <span className="sr-only">Delete</span>
+      <span className="sr-only">Eliminar</span>
     </ConfirmButton>
   );
 }
