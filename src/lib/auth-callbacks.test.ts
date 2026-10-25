@@ -16,4 +16,20 @@ describe("isAllowedLogin", () => {
   it("rejects everyone when admin login is unset", () => {
     expect(isAllowedLogin("santiago-noe", undefined)).toBe(false);
   });
+  it("allows each configured admin and ignores surrounding spaces", () => {
+    const admins = " seeb-fault, SECOND-ADMIN , ";
+    expect(isAllowedLogin("seeb-fault", admins)).toBe(true);
+    expect(isAllowedLogin("second-admin", admins)).toBe(true);
+  });
+  it("rejects partial matches and unlisted users", () => {
+    const admins = "seeb-fault,second-admin";
+    expect(isAllowedLogin("seeb", admins)).toBe(false);
+    expect(isAllowedLogin("second-admin-extra", admins)).toBe(false);
+    expect(isAllowedLogin("someone-else", admins)).toBe(false);
+  });
+  it.each(["", " ", ",", " , , "])("rejects empty configuration %j", (admins) => {
+    expect(isAllowedLogin("seeb-fault", admins)).toBe(false);
+    expect(isAllowedLogin("", admins)).toBe(false);
+    expect(isAllowedLogin(" ", admins)).toBe(false);
+  });
 });

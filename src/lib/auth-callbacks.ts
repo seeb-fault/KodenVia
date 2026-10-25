@@ -1,8 +1,11 @@
-/** Pure admin gate: only the configured GitHub login may sign in. */
+/** Pure admin gate: exact match against the configured comma-separated GitHub logins. */
 export function isAllowedLogin(
   login: string | null | undefined,
-  adminLogin: string | undefined,
+  adminLogins: string | undefined,
 ): boolean {
-  if (!login || !adminLogin) return false;
-  return login.toLowerCase() === adminLogin.toLowerCase();
+  const normalizedLogin = login?.trim().toLowerCase();
+  if (!normalizedLogin || !adminLogins) return false;
+  return adminLogins
+    .split(",")
+    .some((allowedLogin) => allowedLogin.trim().toLowerCase() === normalizedLogin);
 }

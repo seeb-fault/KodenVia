@@ -18,14 +18,14 @@ Crea el proyecto `kodenvia` para el repositorio `seeb-fault/KodenVia`, con Next.
 
 Configura las siguientes variables de **Production** en Vercel:
 
-| Variable                               | Valor                                                           |
-| -------------------------------------- | --------------------------------------------------------------- |
-| `DATABASE_URL`                         | Conexión Session pooler de Supabase.                            |
-| `NEXT_PUBLIC_SITE_URL`                 | `https://kodenvia.vercel.app` o dominio propio confirmado.      |
-| `AUTH_SECRET`                          | Secreto aleatorio nuevo para producción.                        |
-| `ADMIN_GITHUB_LOGIN`                   | `seeb-fault`, administrador elegido para producción.            |
-| `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET` | Credenciales de una aplicación OAuth de GitHub para producción. |
-| `REVALIDATE_SECRET`                    | Secreto aleatorio nuevo para la actualización de contenido.     |
+| Variable                               | Valor                                                                   |
+| -------------------------------------- | ----------------------------------------------------------------------- |
+| `DATABASE_URL`                         | Conexión Session pooler de Supabase.                                    |
+| `NEXT_PUBLIC_SITE_URL`                 | `https://kodenvia.vercel.app` o dominio propio confirmado.              |
+| `AUTH_SECRET`                          | Secreto aleatorio nuevo para producción.                                |
+| `ADMIN_GITHUB_LOGIN`                   | `seeb-fault,elvisllampasi27-oss`, usuarios autorizados para producción. |
+| `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET` | Credenciales de una aplicación OAuth de GitHub para producción.         |
+| `REVALIDATE_SECRET`                    | Secreto aleatorio nuevo para la actualización de contenido.             |
 
 Registra la URL de callback `https://kodenvia.vercel.app/api/auth/callback/github` en la aplicación OAuth. Configura `BLOB_READ_WRITE_TOKEN` para subir imágenes y las variables de Resend para enviar notificaciones. Las credenciales locales de OAuth no se sustituyen automáticamente. Los secretos de la aplicación permanecen en Vercel: el CD solicita una compilación remota para utilizar también las variables de tipo Secret, que no se pueden descargar como variables normales.
 
