@@ -23,9 +23,9 @@ describe("buildTestimonialEmail", () => {
     expect(subject).toContain("Jane");
     expect(html).toContain("Jane &lt;b&gt;Doe&lt;/b&gt;");
     expect(html).toContain("dedication");
-    expect(html).toContain("https://example.com/admin");
+    expect(html).toContain("https://example.com/admin/testimonials?focus=abc-123");
     expect(html).toContain("focus=abc-123");
-    expect(html).toContain("No image provided");
+    expect(html).toContain("No se adjuntó una imagen");
   });
 });
 

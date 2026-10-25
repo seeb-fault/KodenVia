@@ -31,13 +31,20 @@ export default async function TestimonialsPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between gap-3">
-        <AdminPageHeader title="Testimonials" description="Approve or reject submissions." />
-        {pendingCount > 0 ? <Badge tone="warning">{pendingCount} pending</Badge> : null}
+        <AdminPageHeader
+          title="Testimonios"
+          description="Revisa, aprueba o rechaza las referencias recibidas."
+        />
+        {pendingCount > 0 ? (
+          <Badge tone="warning">
+            {pendingCount} {pendingCount === 1 ? "pendiente" : "pendientes"}
+          </Badge>
+        ) : null}
       </div>
 
       {sorted.length === 0 ? (
         <div className="border-border text-muted rounded-xl border border-dashed p-8 text-center text-sm">
-          No testimonials yet.
+          Todavía no hay testimonios.
         </div>
       ) : (
         <ul className="flex flex-col gap-3">
@@ -53,8 +60,8 @@ export default async function TestimonialsPage() {
                   <span className="text-foreground font-medium">{t.name}</span>
                   <span className="text-muted text-xs">{t.relationship}</span>
                   <StatusBadge status={t.status} />
-                  {t.featured ? <Badge tone="brand">Featured</Badge> : null}
-                  {isDuplicate(t.email) ? <Badge tone="warning">Possible duplicate</Badge> : null}
+                  {t.featured ? <Badge tone="brand">Destacado</Badge> : null}
+                  {isDuplicate(t.email) ? <Badge tone="warning">Posible duplicado</Badge> : null}
                 </div>
                 {t.email ? <span className="text-muted text-xs">{t.email}</span> : null}
                 <p className="text-muted line-clamp-2 text-sm">{t.content}</p>
@@ -87,11 +94,11 @@ export default async function TestimonialsPage() {
 }
 
 function StatusBadge({ status }: { status: Testimonial["status"] }) {
-  if (status === "pending") return <Badge tone="warning">Pending</Badge>;
-  if (status === "approved") return <Badge tone="success">Approved</Badge>;
+  if (status === "pending") return <Badge tone="warning">Pendiente</Badge>;
+  if (status === "approved") return <Badge tone="success">Aprobado</Badge>;
   return (
     <span className="inline-flex items-center rounded-full bg-red-500/12 px-2 py-0.5 text-xs font-medium text-red-500">
-      Rejected
+      Rechazado
     </span>
   );
 }
