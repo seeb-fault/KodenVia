@@ -24,7 +24,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    // GitHub profile exposes `login`; reject anyone but the admin.
+    // GitHub profile exposes `login`; reject anyone outside the configured admin list.
     async signIn({ profile }) {
       const login = (profile as { login?: string } | undefined)?.login;
       return isAllowedLogin(login, process.env.ADMIN_GITHUB_LOGIN);

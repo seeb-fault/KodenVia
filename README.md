@@ -42,7 +42,7 @@ Si `.env.local` ya existe, conserva sus valores. Completa las variables antes de
 | `NEXT_PUBLIC_SITE_URL`                                 | URL canónica. En desarrollo: `http://localhost:4000`.                               |
 | `AUTH_SECRET`                                          | Secreto aleatorio para las sesiones del administrador.                              |
 | `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`                 | Credenciales de la aplicación OAuth de GitHub.                                      |
-| `ADMIN_GITHUB_LOGIN`                                   | Usuario de GitHub autorizado para acceder al administrador.                         |
+| `ADMIN_GITHUB_LOGIN`                                   | Usuarios de GitHub autorizados, separados por comas; todos tienen acceso completo al administrador. |
 | `GITHUB_TOKEN`                                         | Opcional; mejora los límites de consulta de repositorios confirmados.               |
 | `BLOB_READ_WRITE_TOKEN`                                | Necesario para subir imágenes a Vercel Blob.                                        |
 | `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `CONTACT_EMAIL` | Notificaciones de nuevas referencias; el remitente debe estar verificado en Resend. |
@@ -66,7 +66,7 @@ En el entorno local ya preparado, PostgreSQL está en el contenedor `portfolio-n
 
 ## Administración y contenido
 
-Accede a `/login` con el usuario indicado en `ADMIN_GITHUB_LOGIN` y entra a `/admin`. Registra `http://localhost:4000/api/auth/callback/github` como callback de la aplicación OAuth para desarrollo. Ajusta la URL al dominio real en producción.
+Accede a `/login` con uno de los usuarios indicados en `ADMIN_GITHUB_LOGIN` y entra a `/admin`. La variable acepta un usuario o una lista separada por comas, sin distinguir mayúsculas. Ser colaborador del repositorio no concede acceso al panel. Todos los usuarios autorizados pueden editar contenido y moderar testimonios. Registra `http://localhost:4000/api/auth/callback/github` como callback de la aplicación OAuth para desarrollo. Ajusta la URL al dominio real en producción.
 
 | Archivo o carpeta                                  | Contenido                                                                |
 | -------------------------------------------------- | ------------------------------------------------------------------------ |
