@@ -11,7 +11,12 @@ import styles from "./TeamShowcase.module.css";
 // Se mantienen los textos de especialidad, resumen y formación de TEAM_MEMBERS.
 const PORTRAITS = [
   { id: "noe", displayName: "Noe Santiago", src: "/images/kodenvia/noe-pose.webp", glasses: false },
-  { id: "elvis", displayName: "Elvis Espino", src: "/images/kodenvia/elvis-pose.webp", glasses: true },
+  {
+    id: "elvis",
+    displayName: "Elvis Espino",
+    src: "/images/kodenvia/elvis-pose.webp",
+    glasses: true,
+  },
 ] as const;
 
 function TeamPortrait({ index }: { index: number }) {
