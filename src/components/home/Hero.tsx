@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { AyacuchoHeroBackdrop } from "@/components/home/AyacuchoHeroBackdrop";
 
 export type HeroProfile = {
   name: string;
@@ -51,6 +52,7 @@ export function Hero({
       ref={ref}
       className="relative flex min-h-svh scroll-mt-24 flex-col justify-center overflow-hidden"
     >
+      <AyacuchoHeroBackdrop />
       {/* Text-protection scrim: quiets the gradient under the type only */}
       <div aria-hidden className="hero-scrim pointer-events-none absolute inset-0" />
 
